@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.smartplant.controllers.UserController"
+            fitToWidth="true" hbarPolicy="NEVER" styleClass="page-scroll">
+    <content>
+        <VBox spacing="22" styleClass="page-content">
+            <VBox spacing="4">
+                <Label text="User management" styleClass="page-title"/>
+                <Label text="View administrators and greenhouse supervisors" styleClass="page-subtitle"/>
+            </VBox>
+            <GridPane hgap="14">
+                <columnConstraints><ColumnConstraints percentWidth="50"/><ColumnConstraints percentWidth="50"/></columnConstraints>
+                <VBox styleClass="summary-card" GridPane.columnIndex="0">
+                    <Label text="TOTAL USERS" styleClass="card-label"/>
+                    <Label text="4" styleClass="summary-value"/>
+                </VBox>
+                <VBox styleClass="summary-card" GridPane.columnIndex="1">
+                    <Label text="ACTIVE USERS" styleClass="card-label"/>
+                    <Label text="3" styleClass="summary-value green-text"/>
+                </VBox>
+            </GridPane>
+            <HBox spacing="12">
+                <TextField fx:id="userSearchField" promptText="Search name or email..." HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="roleFilter" promptText="Filter role" prefWidth="180"/>
+            </HBox>
+            <VBox styleClass="chart-card" spacing="12">
+                <Label text="Registered users" styleClass="section-title"/>
+                <TableView fx:id="usersTable" prefHeight="400" styleClass="data-table">
+                    <columns>
+                        <TableColumn fx:id="userIdColumn" text="ID" prefWidth="90"/>
+                        <TableColumn fx:id="userNameColumn" text="Name" prefWidth="170"/>
+                        <TableColumn fx:id="emailColumn" text="Email" prefWidth="260"/>
+                        <TableColumn fx:id="roleColumn" text="Role" prefWidth="140"/>
+                        <TableColumn fx:id="userStatusColumn" text="Status" prefWidth="110"/>
+                    </columns>
+                </TableView>
+            </VBox>
+            <Label text="User creation, authentication and database persistence are not connected in this demo build." styleClass="notice-text"/>
+        </VBox>
+    </content>
+</ScrollPane>

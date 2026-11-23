@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.smartplant.controllers.PlantDetailsController"
+            fitToWidth="true" hbarPolicy="NEVER" styleClass="page-scroll">
+    <content>
+        <VBox spacing="22" styleClass="page-content">
+            <HBox alignment="CENTER_LEFT">
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="Plant details" styleClass="page-title"/>
+                    <Label text="Individual plant profile and soil sensor readings" styleClass="page-subtitle"/>
+                </VBox>
+                <Button text="← Back to plants" onAction="#backToPlants" styleClass="secondary-button"/>
+            </HBox>
+            <VBox styleClass="chart-card" spacing="8">
+                <Label fx:id="plantNameLabel" text="Plant name" styleClass="section-title"/>
+                <Label fx:id="plantIdLabel" text="Plant ID" styleClass="page-subtitle"/>
+                <Label fx:id="plantStatusLabel" text="Status" styleClass="online-status"/>
+            </VBox>
+            <GridPane hgap="14">
+                <columnConstraints><ColumnConstraints percentWidth="33.33"/><ColumnConstraints percentWidth="33.33"/><ColumnConstraints percentWidth="33.33"/></columnConstraints>
+                <VBox styleClass="sensor-card" GridPane.columnIndex="0">
+                    <Label text="SOIL MOISTURE" styleClass="card-label"/>
+                    <Label fx:id="moistureLabel" text="-- %" styleClass="sensor-value"/>
+                    <Label text="Soil water content" styleClass="card-description"/>
+                </VBox>
+                <VBox styleClass="sensor-card" GridPane.columnIndex="1">
+                    <Label text="SOIL pH" styleClass="card-label"/>
+                    <Label fx:id="phLabel" text="--" styleClass="sensor-value"/>
+                    <Label text="Soil acidity / alkalinity" styleClass="card-description"/>
+                </VBox>
+                <VBox styleClass="sensor-card" GridPane.columnIndex="2">
+                    <Label text="SOIL EC" styleClass="card-label"/>
+                    <Label fx:id="ecLabel" text="-- mS/cm" styleClass="sensor-value"/>
+                    <Label text="Electrical conductivity" styleClass="card-description"/>
+                </VBox>
+            </GridPane>
+            <VBox styleClass="chart-card" spacing="12">
+                <Label text="Soil moisture history (demo data)" styleClass="chart-title"/>
+                <LineChart fx:id="plantHistoryChart" animated="false" prefHeight="300">
+                    <xAxis><CategoryAxis label="Time"/></xAxis>
+                    <yAxis><NumberAxis label="Moisture (%)" autoRanging="false" lowerBound="0" upperBound="100" tickUnit="20"/></yAxis>
+                </LineChart>
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.smartplant.controllers.MonitoringController"
+            fitToWidth="true" hbarPolicy="NEVER" styleClass="page-scroll">
+    <content>
+        <VBox spacing="22" styleClass="page-content">
+            <VBox spacing="4">
+                <Label text="Live monitoring" styleClass="page-title"/>
+                <Label text="Greenhouse-wide environmental sensor readings" styleClass="page-subtitle"/>
+            </VBox>
+            <GridPane hgap="14" vgap="14">
+                <columnConstraints><ColumnConstraints percentWidth="25"/><ColumnConstraints percentWidth="25"/><ColumnConstraints percentWidth="25"/><ColumnConstraints percentWidth="25"/></columnConstraints>
+                <VBox styleClass="sensor-card" GridPane.columnIndex="0">
+                    <Label text="TEMPERATURE" styleClass="card-label"/>
+                    <Label fx:id="monitorTemperature" text="-- °C" styleClass="sensor-value"/>
+                    <Label text="Air temperature" styleClass="card-description"/>
+                </VBox>
+                <VBox styleClass="sensor-card" GridPane.columnIndex="1">
+                    <Label text="HUMIDITY" styleClass="card-label"/>
+                    <Label fx:id="monitorHumidity" text="-- %" styleClass="sensor-value"/>
+                    <Label text="Relative humidity" styleClass="card-description"/>
+                </VBox>
+                <VBox styleClass="sensor-card" GridPane.columnIndex="2">
+                    <Label text="LIGHT" styleClass="card-label"/>
+                    <Label fx:id="monitorLight" text="-- lux" styleClass="sensor-value"/>
+                    <Label text="Light intensity" styleClass="card-description"/>
+                </VBox>
+                <VBox styleClass="sensor-card" GridPane.columnIndex="3">
+                    <Label text="CO₂" styleClass="card-label"/>
+                    <Label fx:id="monitorCO2" text="-- ppm" styleClass="sensor-value"/>
+                    <Label text="Carbon dioxide" styleClass="card-description"/>
+                </VBox>
+            </GridPane>
+            <VBox styleClass="chart-card" spacing="12">
+                <Label text="Temperature history (demo data)" styleClass="chart-title"/>
+                <LineChart fx:id="monitoringChart" animated="false" prefHeight="380">
+                    <xAxis><CategoryAxis label="Time"/></xAxis>
+                    <yAxis><NumberAxis label="Temperature (°C)"/></yAxis>
+                </LineChart>
+            </VBox>
+            <Label text="Sensor readings are simulated for this project demonstration; no physical sensors are connected." styleClass="notice-text"/>
+        </VBox>
+    </content>
+</ScrollPane>

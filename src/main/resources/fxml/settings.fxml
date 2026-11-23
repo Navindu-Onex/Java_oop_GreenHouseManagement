@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.smartplant.controllers.SettingsController"
+            fitToWidth="true" hbarPolicy="NEVER" styleClass="page-scroll">
+    <content>
+        <VBox spacing="22" styleClass="page-content">
+            <VBox spacing="4">
+                <Label text="Settings" styleClass="page-title"/>
+                <Label text="Configure demo monitoring thresholds and notification preferences" styleClass="page-subtitle"/>
+            </VBox>
+            <VBox styleClass="chart-card" spacing="16">
+                <Label text="Environmental thresholds" styleClass="section-title"/>
+                <GridPane hgap="16" vgap="14">
+                    <columnConstraints><ColumnConstraints percentWidth="50"/><ColumnConstraints percentWidth="50"/></columnConstraints>
+                    <VBox spacing="7" GridPane.columnIndex="0">
+                        <Label text="Maximum temperature (°C)" styleClass="card-label"/>
+                        <TextField fx:id="maxTemperatureField" text="35"/>
+                    </VBox>
+                    <VBox spacing="7" GridPane.columnIndex="1">
+                        <Label text="Minimum temperature (°C)" styleClass="card-label"/>
+                        <TextField fx:id="minTemperatureField" text="20"/>
+                    </VBox>
+                    <VBox spacing="7" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                        <Label text="Maximum humidity (%)" styleClass="card-label"/>
+                        <TextField fx:id="maxHumidityField" text="80"/>
+                    </VBox>
+                    <VBox spacing="7" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                        <Label text="Minimum humidity (%)" styleClass="card-label"/>
+                        <TextField fx:id="minHumidityField" text="50"/>
+                    </VBox>
+                </GridPane>
+            </VBox>
+            <VBox styleClass="chart-card" spacing="14">
+                <Label text="Notification preferences" styleClass="section-title"/>
+                <CheckBox fx:id="emailNotifications" text="Enable email notifications"/>
+                <CheckBox fx:id="criticalAlerts" text="Notify when critical alerts occur"/>
+                <CheckBox fx:id="sensorNotifications" text="Notify when sensor readings exceed limits"/>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT">
+                <Button text="Save settings" onAction="#saveSettings" styleClass="primary-button"/>
+            </HBox>
+            <Label text="Settings are validated in memory only. Database persistence and email delivery are not implemented." styleClass="notice-text"/>
+        </VBox>
+    </content>
+</ScrollPane>

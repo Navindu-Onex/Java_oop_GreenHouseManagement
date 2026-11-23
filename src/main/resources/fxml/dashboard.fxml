@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.smartplant.controllers.DashboardController"
+            fitToWidth="true" hbarPolicy="NEVER" styleClass="page-scroll">
+    <content>
+        <VBox spacing="22" styleClass="page-content">
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="Dashboard" styleClass="page-title"/>
+                    <Label text="Overview of your greenhouse environment and plants" styleClass="page-subtitle"/>
+                </VBox>
+                <Label text="●  SYSTEM ONLINE" styleClass="online-status"/>
+            </HBox>
+
+            <VBox spacing="12">
+                <Label text="Environmental conditions" styleClass="section-title"/>
+                <GridPane hgap="14" vgap="14">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="25"/><ColumnConstraints percentWidth="25"/>
+                        <ColumnConstraints percentWidth="25"/><ColumnConstraints percentWidth="25"/>
+                    </columnConstraints>
+                    <VBox styleClass="sensor-card" GridPane.columnIndex="0">
+                        <Label text="🌡 TEMPERATURE" styleClass="card-label"/>
+                        <Label fx:id="temperatureLabel" text="-- °C" styleClass="sensor-value"/>
+                        <Label text="Greenhouse air temperature" styleClass="card-description"/>
+                    </VBox>
+                    <VBox styleClass="sensor-card" GridPane.columnIndex="1">
+                        <Label text="💧 HUMIDITY" styleClass="card-label"/>
+                        <Label fx:id="humidityLabel" text="-- %" styleClass="sensor-value"/>
+                        <Label text="Relative air humidity" styleClass="card-description"/>
+                    </VBox>
+                    <VBox styleClass="sensor-card" GridPane.columnIndex="2">
+                        <Label text="☀ LIGHT INTENSITY" styleClass="card-label"/>
+                        <Label fx:id="lightLabel" text="-- lux" styleClass="sensor-value"/>
+                        <Label text="Ambient light level" styleClass="card-description"/>
+                    </VBox>
+                    <VBox styleClass="sensor-card" GridPane.columnIndex="3">
+                        <Label text="🌫 CO₂ LEVEL" styleClass="card-label"/>
+                        <Label fx:id="co2Label" text="-- ppm" styleClass="sensor-value"/>
+                        <Label text="Carbon dioxide concentration" styleClass="card-description"/>
+                    </VBox>
+                </GridPane>
+            </VBox>
+
+            <VBox spacing="12">
+                <Label text="Greenhouse overview" styleClass="section-title"/>
+                <GridPane hgap="14" vgap="14">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="25"/><ColumnConstraints percentWidth="25"/>
+                        <ColumnConstraints percentWidth="25"/><ColumnConstraints percentWidth="25"/>
+                    </columnConstraints>
+                    <VBox styleClass="summary-card" GridPane.columnIndex="0">
+                        <Label text="TOTAL PLANTS" styleClass="card-label"/>
+                        <Label fx:id="totalPlantsLabel" text="0" styleClass="summary-value"/>
+                    </VBox>
+                    <VBox styleClass="summary-card" GridPane.columnIndex="1">
+                        <Label text="HEALTHY PLANTS" styleClass="card-label"/>
+                        <Label fx:id="healthyPlantsLabel" text="0" styleClass="summary-value green-text"/>
+                    </VBox>
+                    <VBox styleClass="summary-card" GridPane.columnIndex="2">
+                        <Label text="NEEDS ATTENTION" styleClass="card-label"/>
+                        <Label fx:id="attentionPlantsLabel" text="0" styleClass="summary-value warning-text"/>
+                    </VBox>
+                    <VBox styleClass="summary-card" GridPane.columnIndex="3">
+                        <Label text="REGISTERED USERS" styleClass="card-label"/>
+                        <Label fx:id="totalUsersLabel" text="0" styleClass="summary-value"/>
+                    </VBox>
+                </GridPane>
+            </VBox>
+
+            <VBox spacing="12">
+                <Label text="Analytics" styleClass="section-title"/>
+                <HBox spacing="14">
+                    <VBox styleClass="chart-card" HBox.hgrow="ALWAYS">
+                        <Label text="Temperature &amp; humidity trend" styleClass="chart-title"/>
+                        <LineChart fx:id="environmentChart" animated="false" createSymbols="false" prefHeight="270">
+                            <xAxis><CategoryAxis label="Time"/></xAxis>
+                            <yAxis><NumberAxis label="Reading"/></yAxis>
+                        </LineChart>
+                    </VBox>
+                    <VBox styleClass="chart-card" prefWidth="330">
+                        <Label text="Plant health distribution" styleClass="chart-title"/>
+                        <PieChart fx:id="plantHealthChart" animated="false" prefHeight="270"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <VBox spacing="12">
+                <Label text="Recent alerts" styleClass="section-title"/>
+                <TableView fx:id="alertsTable" prefHeight="210" styleClass="data-table">
+                    <columns>
+                        <TableColumn fx:id="alertTimeColumn" text="Time" prefWidth="100"/>
+                        <TableColumn fx:id="alertPlantColumn" text="Source" prefWidth="170"/>
+                        <TableColumn fx:id="alertMessageColumn" text="Message" prefWidth="420"/>
+                        <TableColumn fx:id="alertSeverityColumn" text="Severity" prefWidth="110"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>

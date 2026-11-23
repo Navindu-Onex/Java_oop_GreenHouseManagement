@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.smartplant.controllers.NavigationController"
+      prefWidth="238" spacing="12" styleClass="sidebar">
+    <VBox spacing="4" styleClass="brand-section">
+        <Label text="🌱 SmartGreen" styleClass="brand-title"/>
+        <Label text="GREENHOUSE MANAGEMENT" styleClass="brand-subtitle"/>
+    </VBox>
+    <Separator styleClass="sidebar-separator"/>
+    <Label text="WORKSPACE" styleClass="menu-heading"/>
+    <Button fx:id="dashboardButton" text="▦   Dashboard" onAction="#openDashboard"
+            styleClass="nav-button" maxWidth="Infinity"/>
+    <Button fx:id="plantsButton" text="🌿   Plants" onAction="#openPlants"
+            styleClass="nav-button" maxWidth="Infinity"/>
+    <Button fx:id="monitoringButton" text="◉   Monitoring" onAction="#openMonitoring"
+            styleClass="nav-button" maxWidth="Infinity"/>
+    <Button fx:id="usersButton" text="♙   Users" onAction="#openUsers"
+            styleClass="nav-button" maxWidth="Infinity"/>
+    <Button fx:id="alertsButton" text="⚠   Alerts" onAction="#openAlerts"
+            styleClass="nav-button" maxWidth="Infinity"/>
+    <Region VBox.vgrow="ALWAYS"/>
+    <Separator styleClass="sidebar-separator"/>
+    <Button fx:id="settingsButton" text="⚙   Settings" onAction="#openSettings"
+            styleClass="nav-button" maxWidth="Infinity"/>
+    <Button text="↪   Exit" onAction="#logout"
+            styleClass="logout-button" maxWidth="Infinity"/>
+    <HBox spacing="10" styleClass="profile-section">
+        <Label text="AD" styleClass="profile-avatar"/>
+        <VBox spacing="2">
+            <Label text="Admin User" styleClass="profile-name"/>
+            <Label text="Administrator · Demo" styleClass="profile-role"/>
+        </VBox>
+    </HBox>
+</VBox>

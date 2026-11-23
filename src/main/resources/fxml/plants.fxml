@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.smartplant.controllers.PlantController"
+            fitToWidth="true" hbarPolicy="NEVER" styleClass="page-scroll">
+    <content>
+        <VBox spacing="22" styleClass="page-content">
+            <VBox spacing="4">
+                <Label text="Plants" styleClass="page-title"/>
+                <Label text="Browse greenhouse plants and inspect individual soil conditions" styleClass="page-subtitle"/>
+            </VBox>
+            <GridPane hgap="14">
+                <columnConstraints><ColumnConstraints percentWidth="33.33"/><ColumnConstraints percentWidth="33.33"/><ColumnConstraints percentWidth="33.33"/></columnConstraints>
+                <VBox styleClass="summary-card" GridPane.columnIndex="0">
+                    <Label text="REGISTERED PLANTS" styleClass="card-label"/>
+                    <Label text="6" styleClass="summary-value"/>
+                </VBox>
+                <VBox styleClass="summary-card" GridPane.columnIndex="1">
+                    <Label text="HEALTHY" styleClass="card-label"/>
+                    <Label text="4" styleClass="summary-value green-text"/>
+                </VBox>
+                <VBox styleClass="summary-card" GridPane.columnIndex="2">
+                    <Label text="NEEDS ATTENTION" styleClass="card-label"/>
+                    <Label text="2" styleClass="summary-value warning-text"/>
+                </VBox>
+            </GridPane>
+            <HBox spacing="12">
+                <TextField fx:id="searchField" promptText="Search by plant name or ID..." HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="statusFilter" promptText="Filter status" prefWidth="180"/>
+            </HBox>
+            <VBox styleClass="chart-card" spacing="12">
+                <Label text="Registered plants" styleClass="section-title"/>
+                <Label text="Double-click a plant row to open its individual sensor details." styleClass="card-description"/>
+                <TableView fx:id="plantsTable" prefHeight="420" styleClass="data-table">
+                    <columns>
+                        <TableColumn fx:id="plantIdColumn" text="Plant ID" prefWidth="95"/>
+                        <TableColumn fx:id="plantNameColumn" text="Plant" prefWidth="150"/>
+                        <TableColumn fx:id="plantTypeColumn" text="Type" prefWidth="120"/>
+                        <TableColumn fx:id="moistureColumn" text="Soil moisture" prefWidth="125"/>
+                        <TableColumn fx:id="phColumn" text="pH" prefWidth="75"/>
+                        <TableColumn fx:id="ecColumn" text="EC" prefWidth="100"/>
+                        <TableColumn fx:id="plantStatusColumn" text="Status" prefWidth="110"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>

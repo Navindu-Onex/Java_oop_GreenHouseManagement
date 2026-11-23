@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.smartplant.controllers.AlertController"
+            fitToWidth="true" hbarPolicy="NEVER" styleClass="page-scroll">
+    <content>
+        <VBox spacing="22" styleClass="page-content">
+            <HBox alignment="CENTER_LEFT">
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="System alerts" styleClass="page-title"/>
+                    <Label text="Review greenhouse warnings and sensor notifications" styleClass="page-subtitle"/>
+                </VBox>
+                <Button text="Mark all as read" onAction="#markAllRead" styleClass="secondary-button"/>
+            </HBox>
+            <GridPane hgap="14">
+                <columnConstraints><ColumnConstraints percentWidth="33.33"/><ColumnConstraints percentWidth="33.33"/><ColumnConstraints percentWidth="33.33"/></columnConstraints>
+                <VBox styleClass="summary-card" GridPane.columnIndex="0">
+                    <Label text="TOTAL ALERTS" styleClass="card-label"/>
+                    <Label text="4" styleClass="summary-value"/>
+                </VBox>
+                <VBox styleClass="summary-card" GridPane.columnIndex="1">
+                    <Label text="CRITICAL" styleClass="card-label"/>
+                    <Label text="1" styleClass="summary-value warning-text"/>
+                </VBox>
+                <VBox styleClass="summary-card" GridPane.columnIndex="2">
+                    <Label text="ACTIVE" styleClass="card-label"/>
+                    <Label text="3" styleClass="summary-value"/>
+                </VBox>
+            </GridPane>
+            <HBox spacing="12">
+                <ComboBox fx:id="severityFilter" promptText="All severities" prefWidth="180"/>
+                <ComboBox fx:id="alertStatusFilter" promptText="All statuses" prefWidth="180"/>
+            </HBox>
+            <VBox styleClass="chart-card" spacing="12">
+                <Label text="Alert history" styleClass="section-title"/>
+                <TableView fx:id="alertsTable" prefHeight="410" styleClass="data-table">
+                    <columns>
+                        <TableColumn fx:id="alertIdColumn" text="Alert ID" prefWidth="90"/>
+                        <TableColumn fx:id="alertTimeColumn" text="Time" prefWidth="110"/>
+                        <TableColumn fx:id="alertSourceColumn" text="Source" prefWidth="150"/>
+                        <TableColumn fx:id="alertDescriptionColumn" text="Description" prefWidth="300"/>
+                        <TableColumn fx:id="alertLevelColumn" text="Severity" prefWidth="100"/>
+                        <TableColumn fx:id="alertStateColumn" text="Status" prefWidth="100"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>
